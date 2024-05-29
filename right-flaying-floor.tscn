@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsxqv2e1e7628"]
+
+[ext_resource type="Script" path="res://flying-floors/right-flying/right-flaying-floor.gd" id="1_g4q3y"]
+[ext_resource type="Texture2D" uid="uid://6s5v7y5dyj6d" path="res://icon.svg" id="2_am52b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bd1rr"]
+size = Vector2(129, 103)
+
+[node name="right-flaying-floor" type="StaticBody2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_g4q3y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_am52b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bd1rr")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

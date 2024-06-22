@@ -22,7 +22,26 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	pass
+	
+	
+	
+func instantiate_new_block_on_left_to_right() -> void:
 	var leftToRightBlocks = packedBlockRight.instantiate()
 	var y_left_to_right_spawn_position = randf_range(left_upper_marker.position.y, left_down_marker.position.y )
 	leftToRightBlocks.position = Vector2(left_down_marker.position.x, y_left_to_right_spawn_position)
 	add_child(leftToRightBlocks)
+
+	
+func instantiate_new_block_on_right_to_left() -> void:
+	var rightToLeftBlocks = packedBLockLeft.instantiate()
+	var y_right_to_left_spawn_position = randf_range(right_upper_marker.position.y, right_down_marker.position.y )
+	rightToLeftBlocks.position = Vector2(right_down_marker.position.x, y_right_to_left_spawn_position)
+	add_child(rightToLeftBlocks)
+
+func _on_left_spawn_blocks_timeout(): #each time the timer goes 0, it spawns a new block
+	instantiate_new_block_on_left_to_right()
+
+
+func _on_right_spawn_blocks_timeout(): 
+	instantiate_new_block_on_right_to_left()

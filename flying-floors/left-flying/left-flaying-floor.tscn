@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwsqxkofv2px"]
+[gd_scene load_steps=5 format=3 uid="uid://dwsqxkofv2px"]
 
 [ext_resource type="Script" path="res://flying-floors/left-flying/left-flaying-floor.gd" id="1_jxecf"]
 [ext_resource type="Texture2D" uid="uid://6s5v7y5dyj6d" path="res://icon.svg" id="2_rbm53"]
@@ -6,13 +6,25 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bd1rr"]
 size = Vector2(129, 103)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvppm"]
+size = Vector2(105.333, 94.6667)
+
 [node name="left-flaying-floor" type="StaticBody2D"]
+scale = Vector2(0.75, 0.75)
 script = ExtResource("1_jxecf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(597, 297)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_rbm53")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(596.5, 296.5)
+scale = Vector2(0.75, 0.75)
 shape = SubResource("RectangleShape2D_bd1rr")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShapeOfAread" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.666668, 0.666664)
+shape = SubResource("RectangleShape2D_gvppm")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_some_body2d_has_entered_area2d"]
